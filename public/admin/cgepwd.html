@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>修改密码</title>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="../stylesheets/bootstrap.min.css"/>
+<script src="../javascript/jquery-2.1.4.min.js"></script>
+<script src="../javascript/av-0.5.1.min.js"></script>
+<script type="text/javascript" src="../javascript/common.js"></script>
+<script type="text/javascript" src="js/changePwd.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="../javascript/bootstrap.min.js"></script>
+
+    <SCRIPT>
+        $(document).ready(function(){
+            var user = AV.User.current();
+            if(user==null){
+                window.location = "login.html";
+            }
+            $("#foo").load("top.html");
+        });
+ 
+        function menuShowed(){
+            $("#actmenu_ul").removeClass("in");
+            $("#admin_menu").removeClass("in");
+        }
+    </SCRIPT>
+</head>
+<body>
+<div role="navigation" id="foo" class="nav-collapse"></div>
+<div role="main" class="main">
+
+    <div class="box">
+        <label>原密码：</label><input class="form-control" type="password" id="oldpwd" /><br/>
+        <label>新密码：</label><input class="form-control" type="password" id="newpwd"/><br/>
+        <label>重复新密码：</label><input class="form-control" type="password" id="repwd"/><br/>
+        <div id="changepwdHint"></div>
+        <button onclick="pwdReset()" class="btn btn-info">重置</button> <button class="btn btn-primary" onclick="changePassword()">提交</button>
+    </div>
+</div>
+
+</body>
+</html>

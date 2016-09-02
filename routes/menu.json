@@ -1,0 +1,39 @@
+[
+  {
+    "name": "活动管理",
+    "id": "actmenu_ul",
+    "children": [
+      {
+        "name": "乘车金包",
+        "id": "activitycar_li",
+        "url": "activityCar.html"
+      },
+      {
+        "name": "抢promo码",
+        "id": "promo_li",
+        "url": "promo.html"
+      },
+      {
+        "name": "单乘车金",
+        "id": "activitycoupon_li",
+        "url": "activityCoupon.html"
+      }
+    ]
+  },
+  {
+    "name": "秒杀活动",
+    "id": "actmenu_ul2",
+    "children": [
+      {
+        "name": "秒杀活动",
+        "id": "msActivity_li",
+        "url": "msActivity.html"
+      },
+      {
+        "name": "投票管理",
+        "id": "vote_li",
+        "url": "msVote.html"
+      }
+    ]
+  }
+]

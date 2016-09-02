@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="yes" name="apple-touch-fullscreen">
+	<meta content="telephone=no,email=no" name="format-detection">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" href="img/xuber.png" type="image/x-icon">
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="../../javascript/av-0.5.1.min.js"></script>
+	<script type="text/javascript" src="../../javascript/common.js"></script>
+	<script src="build/flexible_css.js"></script>
+	<script src="build/flexible.js"></script>
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/coupan-style.css">
+	<title>快来抢U礼包！</title>
+	<script type="text/javascript">
+		$(function(){
+            initCarCouponConfig();
+
+		});
+	</script>
+	<style>
+		.wrap-bg{
+		background: url("img/wrap-bg2.png");
+		width: 100%;height:100%;
+		background-repeat:no-repeat;
+		-moz-background-size:cover;
+	    -webkit-background-size:cover;
+	    -o-background-size:cover;
+	    background-size:cover;
+		}
+		.btn-low {
+		   	position:fixed;
+		   	bottom:14%;
+		   	left:20%;
+		    border: 1px solid #2C3E4A;
+		    padding: 2px;
+		    border-radius: 0.609375rem;
+		}
+		.wrap-page-bg{
+			background: url("img/getbg.png");
+			width: 100%;height:100%;
+			background-repeat:no-repeat;
+			-moz-background-size:cover;
+		    -webkit-background-size:cover;
+		    -o-background-size:cover;
+		    background-size:cover;
+		}
+		/*领取奖卷后 对应的提示  */
+		.msg-bg{
+			/*  background: url("img/msgbg4.png");  */
+			background: url("img/getbg.png");  
+			width: 100%;height:100%;
+			background-repeat:no-repeat;
+			-moz-background-size:cover;
+		    -webkit-background-size:cover;
+		    -o-background-size:cover;
+		    background-size:cover;
+		}
+		/*提示框样式控制  */
+		.mobile-formz{
+			    top: 18%;
+			    position: absolute;
+			    left: 0.4rem;
+			    right: 1.40625rem;
+			    margin-top: -3.125rem;
+			    margin-left: -0.2rem;
+		}
+		.uber2 {
+		    width: 4.30938rem;
+		    margin-top: 2.28125rem;
+		    margin-left: 1.2rem;
+		}
+		.msg-span{
+			font-size: 14px;
+		}
+		@media (max-width: 320px) {
+		    /*在小于768像素的屏幕里,这里的样式才生效*/
+		}
+		@media (min-width: 360px) and (max-width: 375px) {
+		    /*在360和375像素之间的屏幕里,这里的样式才生效*/
+		   /*  #err-info{bottom: 4.6rem!important;} */
+		}
+/*弹出*/
+.mask-ff{background: rgba(0,0,0,0.7);position: fixed;top:0;bottom: 0;left: 0;right: 0;  display: -webkit-box;
+  display: -webkit-flex;
+  
+  display: -moz-box;
+  display: -moz-flex;
+  
+  display: -ms-flexbox;
+  
+  display: flex;
+  
+  /* 水平居中*/
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-pack:center;/* IE 10 */
+  
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;/* IE 11+,Firefox 22+,Chrome 29+,Opera 12.1*/
+  
+  /* 垂直居中 */
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-align:center;/* IE 10 */
+  
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;}
+
+.alert{width:70%;padding:10px;background: #fff;border-radius: 5px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;position: relative;text-align: center;z-index:996;}
+.close{position: absolute;width: 30px;height: 30px;top: 106%;left: 2.88rem;;border-radius: 15px;
+-moz-border-radius: 15px;
+-webkit-border-radius: 15px;}
+
+	
+</style>
+</head>
+<body>
+<div class="wrap-bg">
+	<div class="btn-low">
+		<button class="btn-black btn-block" onclick="fetchCarCoupon()" style="width:6rem; ">抢U红包</button>
+	</div> 
+	<div style="position: fixed;bottom: 0.6rem;left: 3.2rem;">
+			<img alt="uber" src="img/header.png" style="width: 3.30938rem; ">
+	</div>
+</div>
+<!-- 页面初始判断提示 -->
+<div class="init-info-box" style="display:none">
+	<div class="init-box">
+		<img src="img/logo.png" class="logo">
+		<p class="init-info">活动已结束！</p>
+	</div>
+</div>
+<!-- 抢红包后输入手机提示 -->
+<div class="mask1" style="display:none" id="inputmobile">
+	<div class="wrap-page-bg"><!-- 控制领取卷的背景图片 -->
+	<div class="mobile-form">
+		<img src="img/email.png" class="uber1">
+		<div class="resault">你抢到了</br>
+			<span class="cash">5</span>
+
+			</br>
+			乘车金
+		</div>
+
+		<input type="text" class="form-control inline-diy" id="phoneNumber" placeholder="请输入绑定手机号">
+        <input type="hidden" id="carCouponId" value=""/>
+        <div id="errorInfo"></div>
+		<button class="btn btn-info btn-large btn-block" onclick="phoneCoupon()">确定</button>
+                        <br>
+        <div style="text-align: center">
+            还不是用户？<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.ubercab&g_f=991653">点击注册！</a>
+        </div>
+
+
+	</div>
+</div>
+</div>
+<!-- 系统信息提示 -->
+<div class="mask msg-bg" style="display:none" id="systemerr">
+	<div class="mobile-formz">
+		<!-- <img src="img/logo1.png" class="uber1"> -->
+		 <img src="img/success.png" class="uber2" style="display: none;" id="successMsg"> <!-- 图片默认隐藏 -->
+		 <img src="img/hadOne.png" class="uber2" style="display: none;" id="successMsg2"> <!-- 图片默认隐藏 -->
+        <p id="err-info" style="position: fixed;top:5.88rem;left: 10%;right: 10%;margin-bottom: 1rem;;line-height: 24px;">记得分享给您的朋友,温暖出行由您开始!</p><!--用了显示提示文字  -->
+		<!-- <button class="btn btn-info btn-large" onclick="closediv()" style="margin-top:6%;float: right;margin-right: 1.1rem;">关闭</button> -->
+	
+	<div class="findDiv" style="position: fixed;bottom: 2.4rem;left: 2%;right: 2%;font-size:0.9rem;width: 96%;height: auto;">
+		<!-- <div class="row form-group">
+				<div class="col-xs-4" style="padding-left:10px;float: left;width: 26%;">
+					<div class="msg-span" onclick="copyUrl2()" style="margin-top:2%;font-size: 0.35rem;">
+						复制内容<br>分享给朋友
+					</div>
+				</div>
+				<div class="col-xs-8" style="padding-right:10px;width: 70%;float: left;">
+					<textarea class="form-control" style="height:45px;" id="testMsg" >温暖出行由我开始,我的朋友们也加入进来吧!</textarea>
+				</div>
+		</div> -->
+			<div class="btn-low" style="border: 0; ">
+				<button class="btn-black btn-block" onclick="showShar()" style="width:6rem;background-color: #31B0D5;border-color: #1B6D85;">马上分享</button>
+			</div> 
+			
+		</div>
+		
+		<div style="position: fixed;bottom: 0.6rem;left: 3.2rem;">
+			<img alt="uber" src="img/dbuber.png" style="width: 3.30938rem; ">
+		</div>
+	</div>
+	
+	
+    <input id="hasOneHint" type="hidden" value="">
+    <input id="successHint" type="hidden" value="">
+</div>
+
+<!-- //展示 透明遮罩层 -->
+<div id="divShow2" class="mask-ff" style="display: none">
+		<div class="alert">
+		<div style="position: fixed;top:28%;color: #ffffff;font-size: 0.5rem;margin-left: 0.4rem;" onclick="copyUrl2()">复制以下内容分享给朋友</div>
+		<div class="col-xs-8" style="padding-right:10px;width: 100%;float: left;">
+			<textarea class="form-control" style="height:4rem;" id="testMsg" >温暖出行由我开始,我的朋友们也加入进来吧!</textarea>
+		</div>
+		<div class="close" onclick="divClose()">
+			<button class="btn btn-info btn-large" onclick="divClose()">关闭</button>
+		</div>
+	</div>
+</div>
+
+	<script type="text/javascript" src="../../javascript/AV.analytics.js"></script>
+	<script type="text/javascript" src="../../javascript/event.js"></script>
+    <script type="text/javascript" src="js/carCoupon.js"></script>
+<script type="text/javascript">
+    function copyUrl2()
+    {
+        var Url2=document.getElementById("testMsg");
+        Url2.select(); // 选择对象
+        document.execCommand("Copy"); // 执行浏览器复制命令
+//        alert("复制成功");
+    }
+    /*打开展示层 */
+    function showShar(){
+    	$("#divShow2").show();
+    }
+    
+    /*关闭展示层  */
+    function divClose(){
+    	$("#divShow2").hide();
+    }
+</script>
+</body>
+</html>

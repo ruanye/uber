@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+
+
+
+<body>
+
+</body>
+<script>
+	//
+	window.onload=function(){
+		//var newurl = "www.baidu.com";
+		var newurl = changeURLArg("www.dogddd.com", "orderId", "");
+		window.history.pushState(null, null, newurl);
+		alert(222);
+	}
+	
+	
+	function changeURLArg(url, arg, arg_val) {
+	    var pattern = arg + '=([^&]*)';
+	    var replaceText = arg + '=' + arg_val;
+	    if (url.match(pattern)) {
+	        var tmp = '/(' + arg + '=)([^&]*)/gi';
+	        tmp = url.replace(eval(tmp), replaceText);
+	        return tmp;
+	    } else {
+	        if (url.match('[\?]')) {
+	            return url + '&' + replaceText;
+	        } else {
+	            return url + '?' + replaceText;
+	        }
+	    }
+	    return url + '\n' + arg + '\n' + arg_val;
+	}
+</script>
+</html>

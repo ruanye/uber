@@ -1,0 +1,39 @@
+{
+  "SUCCESS": {
+    "errorCode": 0,
+    "message": "成功"
+  },
+  "UNHANDLED_ERROR": {
+    "errorCode": -1,
+    "message": "未处理的异常"
+  },
+  "UNHANDLED_EXCEPTION": {
+    "errorCode": -1,
+    "message": "未处理的异常"
+  },
+  "FAILURE": {
+    "errorCode": 1,
+    "message": "失败"
+  },
+  "NOT_LOGIN": {
+    "errorCode": 2,
+    "message": "未登录"
+  },
+  "NOT_ADMIN_LOGIN": {
+    "errorCode": 3,
+    "message": "非管理员登录",
+    "url": "/admin/login.html"
+  },
+  "FORM_DATA_INVALID": {
+    "errorCode": 4,
+    "message": "表单数据无效"
+  },
+  "ILLEGAL_PARAMS":{
+    "errorCode": 5,
+    "message": "非法参数"
+  },
+  "COMMUNICATION_FAILED": {
+    "errorCode": 6,
+    "message": "通讯错误，请稍后重试！"
+  }
+}

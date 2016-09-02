@@ -1,0 +1,257 @@
+﻿* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+a{text-decoration:none;}
+html, body, .wrap-page {
+  height: 100%;
+}
+.wrap-page{
+  position:absolute;
+  left:0;
+  right:0;
+}
+.wrap-page{
+  top: 0;
+  bottom: 0;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.page{
+  height:100vh;
+
+}
+.sc1{background:#fdc53f url('../images/sc1.png') center top no-repeat;background-size:cover;text-align:center;}
+.tlt{margin:0 auto;width:100%;}
+.rule-box{position:absolute;width:70%;height:70vh;bottom:10rem;left:3.5rem;background:url('../images/rule.png') left bottom no-repeat;background-size:100% auto;}
+.btn{width:30.7vw;height:30.7vw;background:url('../images/btn.png') no-repeat;background-size:cover;display:block;-moz-border-radius: 50%;      /* Gecko browsers */
+    -webkit-border-radius: 50%;   /* Webkit browsers */
+    border-radius:50%; position:absolute;bottom:4vw;right:5.09vw; }
+.sc2{background:#cbebdf url('../images/cj.png') center bottom no-repeat;background-size:100% auto;}
+.topbar{display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; 
+  background:#f7605f url('../images/line.png') center no-repeat;
+  background-size:1px 50%;
+
+}
+.topbar p{-webkit-box-flex: 1;
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  text-align:center;
+ line-height:2;
+font-size:1.125em;
+color:#fff;
+  }
+  .topbar p span{color:#fdc53f}
+  .bottombar{background:#7c3201;height:1em;width:100%;position:absolute;left:0;bottom:0;}
+  .man{
+  width:120px;
+  height:120px;
+  position:absolute;right:20px;bottom:1em;
+  }
+
+.walking{
+background: url(../images/man.png) 0 0 no-repeat;
+background-size:auto 100%;
+-webkit-animation-name: charector-1;/* 动画名称 */
+-webkit-animation-iteration-count: infinite;/* 动画无限播放 */
+-webkit-animation-timing-function: step-start;/* 马上跳到动画每一结束桢的状态 */
+-webkit-animation-duration: 1s;/* 动画运行的时间 */
+
+animation-name: charector-1;/* 动画名称 */
+animation-iteration-count: infinite;/* 动画无限播放 */
+animation-timing-function: step-start;/* 马上跳到动画每一结束桢的状态 */
+animation-duration: 1s;/* 动画运行的时间 */
+
+-moz-animation-name: charector-1;/* 动画名称 */
+-moz-animation-iteration-count: infinite;/* 动画无限播放 */
+-moz-animation-timing-function: step-start;/* 马上跳到动画每一结束桢的状态 */
+-moz-animation-duration: 1s;/* 动画运行的时间 */
+
+-o-animation-name: charector-1;/* 动画名称 */
+-o-animation-iteration-count: infinite;/* 动画无限播放 */
+-o-animation-timing-function: step-start;/* 马上跳到动画每一结束桢的状态 */
+-o-animation-duration: 1s;/* 动画运行的时间 */
+
+}
+@keyframes charector-1{
+    0% {background-position: 0 0;}
+    25% {background-position: -120px 0;}
+    50% {background-position: -240px 0;}
+	75% {background-position: -360px 0;}
+	100% {background-position: -0 0;}
+}
+@-webkit-keyframes charector-1{
+     0% {background-position: 0 0;}
+    25% {background-position: -120px 0;}
+    50% {background-position: -240px 0;}
+	75% {background-position: -360px 0;}
+	100% {background-position: -0 0;}
+}
+@-moz-keyframes charector-1{
+    0% {background-position: 0 0;}
+    25% {background-position: -120px 0;}
+    50% {background-position: -240px 0;}
+	75% {background-position: -360px 0;}
+	100% {background-position: -0 0;}
+}
+@-o-keyframes charector-1{
+  0% {background-position: 0 0;}
+    25% {background-position: -120px 0;}
+    50% {background-position: -240px 0;}
+	75% {background-position: -360px 0;}
+	100% {background-position: -0 0;}
+}
+.gun img{width:7.7vw;}
+.dan img{width:7.9vw;}
+.cui img{width:13.8vw;}
+.zhuan img{width:13.87vw;}
+.banshou img{width:11.2vw;}
+
+
+.jg1{background:url('../images/jg1.png') center top no-repeat;background-size:cover;text-align:center;}
+.jg1-box{position:absolute;width:80%;height:100vh;bottom:10rem;left:2.5rem;background:url('../images/99.png') left bottom no-repeat;background-size:100% auto;}
+.btn1{width:64.7vw;height:49.6vw;display:block;position:absolute;bottom:5px;left:50%;margin-left:-32.4vw;background:url('../images/libao.png') no-repeat;background-size:cover; }
+.score{color:#d5000f;font-size:1.6em;font-weight:bold;position:absolute;bottom:63vw;width:100%;text-align:center;}
+.score1{color:#d5000f;font-size:1.6em;font-weight:bold;position:absolute;bottom:63vw;width:100%;text-align:center;}
+.score2{color:#d5000f;font-size:1.6em;font-weight:bold;position:absolute;bottom:63vw;width:100%;text-align:center;}
+.jg2{background:url('../images/jg2.png') center top no-repeat;background-size:cover;text-align:center;}
+.jg2-box{position:absolute;width:80%;height:100vh;bottom:10rem;left:2.5rem;background:url('../images/60.png') left bottom no-repeat;background-size:100% auto;}
+.btn2{width:25vw;height:25vw;display:block;-moz-border-radius: 50%;      /* Gecko browsers */
+    -webkit-border-radius: 50%;   /* Webkit browsers */
+    border-radius:50%; position:absolute;bottom:8.27vw;left:6.66vw;background:url('../images/btn1.png') no-repeat;background-size:cover; }
+
+.jg3{background:url('../images/jg2.png') center top no-repeat;background-size:cover;text-align:center;}
+.jg3-box{position:absolute;width:80%;height:100vh;bottom:10rem;left:2.5rem;background:url('../images/12.png') left bottom no-repeat;background-size:100% auto;}
+.btn3{width:25vw;height:25vw;line-height:25vw;display:block;background:url('../images/btn1.png') no-repeat;background-size:cover;-moz-border-radius: 50%;      /* Gecko browsers */
+    -webkit-border-radius: 50%;   /* Webkit browsers */
+    border-radius:50%; position:absolute;bottom:8.27vw;left:6.66vw;font-size:1.2rem;color:#fff;font-weight:bold;text-shadow: black 0 1px 0; }
+
+.jg4{background:url('../images/jg4.png') center top no-repeat;background-size:cover;text-align:center;}
+.jg4-box{position:absolute;width:100%;height:100vh;bottom:0;left:0;background:url('../images/ff.png') left center no-repeat;background-size:100% auto;}
+/*礼包动画*/
+.animated2 {
+-webkit-animation-name:bounceIn;/* 动画名称 */
+animation-name: bounceIn;/* 动画名称 */
+-moz-animation-name: bounceIn;/* 动画名称 */
+-o-animation-name: bounceIn;/* 动画名称 */
+	-webkit-animation-duration: 2.1s;
+	   -moz-animation-duration: 2.1s;
+	     -o-animation-duration: 2.1s;
+	        animation-duration: 2.1s;
+	-webkit-animation-fill-mode: both;
+	   -moz-animation-fill-mode: both;
+	     -o-animation-fill-mode: both;
+	        animation-fill-mode: both;
+}
+
+@-webkit-keyframes bounceIn {
+	0% {
+		opacity: 1;
+		-webkit-transform: scale(.6);
+	}
+	
+	50% {
+		opacity: 1;
+		-webkit-transform: scale(1.05);
+	}
+	
+	70% {
+		-webkit-transform: scale(.9);
+	}
+	
+	100% {
+		-webkit-transform: scale(1);
+	}
+}
+
+@-moz-keyframes bounceIn {
+	0% {
+		opacity: 1;
+		-moz-transform: scale(.6);
+	}
+	
+	50% {
+		opacity: 1;
+		-moz-transform: scale(1.05);
+	}
+	
+	70% {
+		-moz-transform: scale(.9);
+	}
+	
+	100% {
+		-moz-transform: scale(1);
+	}
+}
+
+@-o-keyframes bounceIn {
+	0% {
+		opacity: 1;
+		-o-transform: scale(.6);
+	}
+	
+	50% {
+		opacity: 1;
+		-o-transform: scale(1.05);
+	}
+	
+	70% {
+		-o-transform: scale(.9);
+	}
+	
+	100% {
+		-o-transform: scale(1);
+	}
+}
+
+@keyframes bounceIn {
+	0% {
+		opacity: 1;
+		transform: scale(.6);
+	}
+	
+	50% {
+		opacity: 1;
+		transform: scale(1.05);
+	}
+	
+	70% {
+		transform: scale(.9);
+	}
+	
+	100% {
+		transform: scale(1);
+	}
+}
+
+.bounceIn {
+	-webkit-animation-name: bounceIn;
+	-moz-animation-name: bounceIn;
+	-o-animation-name: bounceIn;
+	animation-name: bounceIn;
+}
+.leftbar{
+
+}
+.leftbar .btn{
+	position: absolute;
+	left: 2rem;
+	bottom: 3rem;
+}
+
+
+.btn_hz{width:45.7vw;height:60.7vw;background:url('../images/index_hz.png') no-repeat;background-size:cover;display:block;     /* Gecko browsers */
+
+	 position:absolute;bottom:26vw;right:3.09vw; }
+.leftbar .btn_hz{
+	position: absolute;
+	right: 2rem;
+	bottom: 6rem;
+}

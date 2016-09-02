@@ -1,0 +1,73 @@
+<style>
+.menu-first{
+		background-image: linear-gradient(to bottom, #F5F5F5 0px, #E8E8E8 100%);
+        background-repeat: repeat-x;
+		border-top: 1px solid #efefef;
+		border-bottom: 1px solid #e1e1e1;
+		padding: 0;
+		font-size: 14px;
+		font-weight: normal;
+	}
+.menu-second li a{
+	background-image: url("../images/debut_dark_@3X.png");
+}
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px 10px 45px;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background: #666;;
+    color:#E8E8E8;
+}
+</style>
+
+<script src="../javascript/jquery.cookie.js"></script>
+<link rel="stylesheet" href="../stylesheets/custom.css"/>
+
+<script type="text/javascript">
+	$(document).ready(function(){ 
+		var user = AV.User.current();
+		if (user) {
+            /* if(user.get("username")!="admin"){
+                window.location.href = "login.html";
+            } */
+		} else {
+			window.location.href = "login.html";
+		}
+        var cookieInf =  $.cookie("szadmin" + user.get("username"));
+        if(cookieInf==null || cookieInf == "undefined" || cookieInf == undefined){
+            logout();
+        }
+        AV.Cloud.run('admin_menu_list',null, {
+            success:function(result){
+                if(result.length>0){
+                   $(".sidebar-menu").html(result);
+                    menuShowed();
+                }
+            },
+            error:function(error){
+               console.log(JSON.stringify(error));
+            }
+        });
+    });
+
+    //用户退出
+    function logout() {
+        AV.User.logOut();
+        $.post("/admin_logout").done(function (res) {
+            window.location.href = "login.html";
+        });
+    }
+</SCRIPT>
+<!--[if lte IE 8]><link rel="stylesheet" href="css/responsive-nav.css"><![endif]-->
+<!--[if gt IE 8]><!--><link rel="stylesheet" href="../stylesheets/custom.css"><!--<![endif]-->
+<div class="row">
+	<div class="col-md-12">
+		<div class="row">
+			<div class="sidebar-menu">
+			</div>
+		</div>
+	</div>
+</div>

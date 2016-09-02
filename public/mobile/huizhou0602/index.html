@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>惊现苏东坡的宝藏！Uber带你去找！</title>
+    <script src="vendor/lib-flexible/build/flexible.js"></script>
+    <link href="css/main.css" rel="stylesheet" media="screen">
+</head>
+
+<body>
+    <div id="wx_pic" style="display: none;margin: 0 auto;">
+        <img src="images/icon.png" />
+    </div>
+    <div class="wrap-page">
+        <!-- 首页 -->
+        <section class="page page1" id="first">
+            <div class="top"><img src="images/top.png" alt=""></div>
+            <div class="logo"><img src="images/logo.png" alt=""></div>
+            <div class="bgimg"><img class="img1" src="images/page1bg.jpg" alt=""></div>
+            <div class="nimg text-center"><img class="animated fadeInRight a1" src="images/page1-1.png" alt=""></div>
+            <div class="nimg text-center"><img class="animated fadeInRight a2" src="images/page1-2.png" alt=""></div>
+            <div class="nimg text-center"><img class="animated fadeInRight a3" src="images/page1-3.png" alt=""></div>
+            <div class="nimg text-center"><img class="animated fadeInRight a4" src="images/page1-4.png" alt=""></div>
+        </section>
+        <!-- 输入电话号码页面 -->
+        <section class="page page2 hide" id="luck">
+            <div class="top"><img src="images/top.png" alt=""></div>
+            <div class="logo"><img src="images/logo.png" alt=""></div>
+            <!-- 西湖红包 -->
+            <div class="xh hide">
+                <img class="img2" src="images/page2bg.jpg" alt="">
+                <div class="text-center xihu"><img src="images/page2-1.png" alt=""></div>
+            </div>
+            <!--罗浮山红包 -->
+            <div class="lfs hide">
+                <img class="img3" src="images/lfs.png" alt="">
+                <div class="text-center xihu"><img src="images/lfs-1.png" alt=""></div>
+            </div>
+            <!-- 什么湾红包 -->
+            <div class="gw hide">
+                <img class="img3" src="images/gw.png" alt="">
+                <div class="text-center xihu"><img src="images/gw-1.png" alt=""></div>
+            </div>
+            <!-- 东坡红包 -->
+            <div class="dp text-center hide">
+                <img class="img4" src="images/dp.png" alt="">
+                <div class="text-center xihu"><img src="images/dp-1.png" alt=""></div>
+            </div>
+            <div class="inputbox text-center">
+                <input type="text" placeholder="请输入手机号码" id="phoneNumber">
+            </div>
+            <button class="btn animated flipInX " onclick="Coupon.save()">马上领取红包</button>
+            <p class="text-center" id="errorInfo"></p>
+        </section>
+        <!-- 分享页面 -->
+        <section class="page pages hide" id="share">
+            <div class="top"><img src="images/top.png" alt=""></div>
+            <div class="logo"><img src="images/logo.png" alt=""></div>
+            <div class="sharebtn animated infinite fadeIn"><img src="images/shrbtn.png" alt=""></div>
+            <p class="text1">打开优步APP
+                <br>在<span>“优惠”</span>选项中
+                <br>查询你抢到的最新优惠</p>
+            <img class="xiaou" src="images/yh_03.png" alt="">
+        </section>
+        <!-- 领取成功页面 -->
+        <section class="page page3 hide" id="sucess">
+            <div class="top"><img src="images/top.png" alt=""></div>
+            <div class="logo "><img src="images/logo.png" alt=""></div>
+            <div class="hb animated tada infinite text-center"><img src="images/hb.png" alt=""></div>
+            <div class="timg text-center"><img src="images/threetext.png" alt=""></div>
+            <p class="text1 text-center">已存入你的优步账户
+                <br>周末记得坐优步优享免费出行</p>
+            <p class="text1 normal text-center">（限制6月4，5日使用，每程最高减免十元）</p>
+            <div class="sharetext text-center"><span class="shrbtnt">点击查看找到的优惠</span></div>
+            <p class="text-center text1 wow hide">亲爱的你已经领取过啦
+                <br>不能重复领取哦</p>
+            <img class="momey one" src="images/money.png" alt="">
+            <img class="momey two" src="images/money.png" alt="">
+            <img class="momey three" src="images/money.png" alt="">
+            <img class="momey four" src="images/money.png" alt="">
+        </section>
+        <!-- 未注册用户注册页面 -->
+        <section class="page page4 hide" id="register">
+            <div class="top"><img src="images/top.png" alt=""></div>
+            <div class="logo"><img src="images/logo.png" alt=""></div>
+            <div class="box"><img src="images/page4.png" alt=""></div>
+            <p class="text-center text1">
+                东坡公子说
+                <br> 还没注册Uber优步？错过优惠好可惜哦
+            </p>
+            <div class="btext text-center"><span onclick=" window.location.href ='https://get.uber.com.cn/invite/UHZH5'">立即注册拿优惠</span></div>
+        </section>
+        <section class="page end hide">
+            <div style="position:absolute;top:48%; font-size:0.5rem;color:#020240; text-align:center;width: 10rem"> 活动结束</div>
+        </section>
+    </div>
+    <script type="text/javascript" src="../../javascript/jquery-2.1.4.min.js"></script>
+    <script src="https://leancloud.cn/scripts/lib/av-0.5.1.min.js"></script>
+    <script type="text/javascript" src="../../javascript/AV.analytics.js"></script>
+    <script type="text/javascript" src="../../javascript/event.js"></script>
+    <script type="text/javascript" src="../../javascript/common.js"></script>
+    <script src="vendor/zepto/zepto.min.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+    var page = document.querySelectorAll('.wrap-page');
+    var doch = window.innerHeight;
+    console.log(doch);
+    for (var i = 0; i < page.length; i++) {
+        page[i].style.height = doch + 'px';
+    }
+    $('.nimg').on('click', function(event) {
+        $('#first').fadeOut();
+        //判断本地存储
+        if (localStorage[Coupon.actId]) {
+            $('#sucess').fadeIn();
+            $('.wow').show();
+            return;
+        }
+        $('#luck').show();
+
+        if ((event.target.className).indexOf('a1') != -1) {
+            $('.xh').fadeIn()
+        }
+        if ((event.target.className).indexOf('a2') != -1) {
+            $('.lfs').fadeIn()
+        }
+        if ((event.target.className).indexOf('a3') != -1) {
+            $('.gw').fadeIn()
+        }
+        if ((event.target.className).indexOf('a4') != -1) {
+            $('.dp').fadeIn()
+        }
+
+        event.preventDefault();
+    });
+    $('.shrbtnt').on('click', function(event) {
+        $('#sucess').fadeOut();
+        $('#share').fadeIn();
+
+        event.preventDefault();
+    });
+    </script>
+</body>
+
+</html>

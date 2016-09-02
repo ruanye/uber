@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>乘车金活动管理</title>
+	<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://leancloud.cn/scripts/lib/av-0.5.1.min.js"></script>
+	
+	<link rel="stylesheet" href="../stylesheets/bootstrap.min.css" />
+	<script src="../javascript/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="../javascript/common.js"></script>
+
+	<script type="text/javascript" src="js/promo.js"></script>
+	<script type="text/javascript" src="js/promoCode.js"></script>
+
+	<link href="../stylesheets/font-awesome.min.css" rel="stylesheet">
+    <!--日期控件-->
+    <link rel="stylesheet" href="../stylesheets/bootstrap-datetimepicker.css" media="screen"/>
+    <script type="text/javascript" src="../javascript/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="../javascript/bootstrap-datetimepicker.zh-CN.js"></script>
+	<link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../stylesheets/summernote.css" rel="stylesheet">
+	<script src="../javascript/summernote.min.js"></script>
+	<script src="../javascript/summernote-ext-video.js"></script>
+	<script src="../javascript/summernote-zh-CN.js"></script>
+</head>
+<body>
+<SCRIPT>
+	$(document).ready(function(){
+		$("#foo").load("top.html");
+	});
+	function menuShowed(){
+		$("#actmenu_ul").addClass("in");
+		$("#promo_li").addClass("active");
+	}
+</SCRIPT>
+<div role="navigation" id="foo" class="nav-collapse"></div>
+<div role="main" class="main">
+	<div class="box">
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="home">
+				<div class="panel-heading text-primary">
+					<h3 class="panel-title">
+		              		<span class="pull-right"> 
+		              			<a href="#" class="btn btn-primary" onclick="Promo.showSaveView('')">添加活动</a>
+		              			<input id="objectid" type="hidden"/>
+		              		</span>
+					</h3>
+				</div>
+				<div class="panel-body" >
+					<table class="table users-table table-condensed table-hover" id="storDatetable" >
+						<thead>
+						<tr>
+							<th class="visible-lg">活动名称</th>
+							<!-- <th class="visible-lg">抢码类型</th> -->
+							<th class="visible-lg">有效日期</th>
+							<th class="visible-lg">是否有效</th>
+							<th class="visible-lg">参与人数</th>
+							<th class="visible-lg" width="100px;">操作</th>
+						</tr>
+						</thead>
+						<tbody id="dataMsg">
+						</tbody>
+					</table>
+				</div>
+				<p class="alert-info" style="padding:10px;margin-top:15px">
+					<span id="hint_MSG"></span>
+					<button id="btn1" class="btn btn-warning pull-right"  onclick="Promo.goPage('1');">下一页</button>
+					<button id="btn2" class="btn btn-warning pull-right" style="margin-right: 10px;" onclick="Promo.goPage('-1');">上一页</button>
+					<br/><br/>
+				</p>
+			</div>
+		</div>
+		<div class="modal fade" id="myModal">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content" style="margin-left:100px;width:100%;">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">编辑活动</h4>
+					</div>
+					<div class="modal-body">
+						<div role="tabpanel" class="tab-pane" id="tab_query">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="inputUserNo" class="col-sm-2 control-label">活动名称</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="name" placeholder="活动名称">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="row">&nbsp;</div>
+							<div class="row">
+								<div class="form-group">
+									<label for="inputUserNo" class="col-sm-2 control-label">抢码类型</label>
+									<div class="col-sm-10">
+										<input type="radio" name="robType" checked="checked" value="0"/>输入手机号&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="radio" name="robType" value="1"/>带参uuid
+									</div>
+								</div>
+							</div> -->
+                            <div class="row">&nbsp;</div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="inputUserNo" class="col-sm-2 control-label">有效期</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="cutoffDate" class="form-control" placeholder="有效期" readonly="readonly"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">&nbsp;</div>
+							<div class="row">
+								<div class="form-group">
+									<label for="inputUserNo" class="col-sm-2 control-label">关联游戏</label>
+									<div class="col-sm-8">
+										<select id="game_sel" class="form-control">
+											<option id="op_0" value="0">不关联</option>
+											<option id="op_gold" value="gold">接金块</option>
+										</select>
+									</div>
+								</div>
+							</div>
+                            <div class="row">&nbsp;</div>
+							<div class="row">
+								<div class="form-group">
+									<label for="inputUserNo" class="col-sm-12 control-label">app链接，如http://couponsz.leanapp.cn/mobile/redpacket/views/redPack.html</label>
+									<div class="col-sm-12">
+										<label for="inputUserNo" class="col-sm-2"></label>
+										<div class="col-sm-10" style="margin-left:-10px;">
+											<input class="form-control" id="appUrl" style="margin:auto;display:block;" placeholder="app链接"/>
+										</div>
+									</div>
+								</div>
+							</div>
+                            <div class="row">&nbsp;</div>
+							<div class="row">
+								<div class="form-group">
+									<label for="inputUserNo" class="col-sm-2 control-label">领取前提示文字</label>
+									<div class="col-sm-8">
+										<!-- <textarea class="form-control" id="couponContent" style="margin:auto;display:block;" placeholder="领取前提示文字"></textarea> -->
+										<div class="editor">
+											<div id="couponContent"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+                            <div class="row">&nbsp;</div>
+							<div class="row">
+								<div class="form-group">
+									<label for="inputUserNo" class="col-sm-2 control-label">领取成功提示文字</label>
+									<div class="col-sm-10">
+										<textarea class="form-control" id="successContent" style="margin:auto;display:block;" placeholder="领取成功提示文字"></textarea>
+									</div>
+								</div>
+							</div>
+                            <div class="row">&nbsp;</div>
+							<div class="row">
+								<div class="form-group">
+									<label for="inputUserNo" class="col-sm-2 control-label">重复领取提示文字</label>
+									<div class="col-sm-10">
+										<textarea class="form-control" id="repeatContent" style="margin:auto;display:block;" placeholder="重复领取提示文字"></textarea>
+									</div>
+								</div>
+							</div>
+                            <div class="row">&nbsp;</div>
+							<div class="row">
+								<div class="form-group">
+									<label for="inputUserNo" class="col-sm-2 control-label">领取完提示文字</label>
+									<div class="col-sm-10">
+										<!-- <textarea class="form-control" id="endContent" style="margin:auto;display:block;" placeholder="领取完提示文字字"></textarea> -->
+										<div class="editor">
+											<div id="endContent"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+                            <div class="row">&nbsp;</div>
+							<div class="row">
+								<div class="form-group">
+									<label for="inputUserNo" class="col-sm-2 control-label">可复制的分享文字</label>
+									<div class="col-sm-10">
+										<textarea class="form-control" id="sharecontent" style="margin:auto;display:block;" placeholder="可复制的分享文字"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="row" style="margin-left:35px;">
+								<div class="form-group">
+									<div class="col-sm-6" id="hintInfo"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer" style="margin-top: -20px;">
+						<button onclick="Promo.saveData()" id="save_btn" data-loading-text="保存中，请勿关闭窗口..." class="btn btn-primary">保存</button>
+						<button class="btn btn-default" data-dismiss="modal">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="drawUserModal">
+        	<div class="modal-dialog modal-lg">
+          		<div class="modal-content" style="margin-left:100px;width:100%;">
+            		<div class="modal-header">
+              			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              			<h4 class="modal-title">promo码</h4>
+            		</div>
+            		<br/>
+            		<div role="tabpanel">
+						<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation" class="active">
+								<a href="#drawuser_upload" aria-controls="drawuser_upload" role="tab" data-toggle="tab">上传数据</a></li>
+		    				<li role="presentation">
+		    					<a href="#drawuser_list" aria-controls="drawuser_list" role="tab" data-toggle="tab" onclick="PromoCode.loadData()">promo码信息</a>
+		    				</li>
+						</ul>
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="drawuser_upload">
+								<div class="row min-height" style="margin-left:20px;width:94%;">
+									上传的数据格式为<br/>
+									promo码,说明,地址,查看如何兑换链接 例如<br />
+									tx9999,说明一,,http://xx.xx.com<br/>
+									,说明二,https://get.uber.com.cn/invite/HongbaoTest13,http://xx.xx.com<br/>
+									<textarea class="form-control" rows="15" cols="100" id="drawuser_data"></textarea>
+									<span id="uploadUserinfo_div"></span><br/>
+		
+									<div style="display: inline-block; width: 300px">
+										<button onclick="PromoCode.upload()" style="float: left"
+											id="uploadButton" data-loading-text="数据上传中，请不要关闭窗口..." class="btn btn-primary">上传资料</button>
+									</div>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="drawuser_list" style="margin-top:-20px;">
+							    <div class="row min-height">
+									<div class="col-sm-12">
+										<div class="form-group">
+							               	<div class="panel-body" >
+								               	<span class="pull-right"> 
+								               		<font id="deletecode_font" style="display: none;color: red;">由于您已发布即生效一次，则不允许删除promo码</font>
+							              			<a href="#" id="deletecode_btn" class="btn btn-primary" onclick="PromoCode.deleteData()">删除</a>
+							              		</span>
+								              	<table class="table users-table table-condensed table-hover">
+								                	<thead>
+								                  	<tr>
+								                    	<th class="visible-lg">promo码</th>
+								                    	<th class="visible-lg">说明</th> 
+								                    	<th class="visible-lg">地址</th>
+								                    	<th class="visible-lg">如何兑换链接</th>
+								                  	</tr>
+								                	</thead>
+								                	<tbody id="drawuser_tablebody">
+													</tbody>
+								              	</table>
+								            </div>
+											<p class="alert-info" style="padding:10px;margin-top:15px">
+												<span id="drawUserinfo_div"></span>
+												<button id="user_btn1" class="btn btn-warning pull-right" disabled="disabled" onclick="PromoCode.goPage('1');">下一页</button>
+												<button id="user_btn2" class="btn btn-warning pull-right" style="margin-right: 10px;" disabled="disabled" onclick="PromoCode.goPage('-1');">上一页</button>
+												<br/><br/>
+											</p>
+										</div>
+									</div> 
+								</div>
+							</div>
+						</div>
+					</div>
+            		<div class="modal-footer">
+              			<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            		</div>
+          		</div>
+        	</div>
+      	</div>
+		
+        <div class="modal fade" id="UrlModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="margin-left:100px;width:700px;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">链接</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div role="tabpanel" class="tab-pane">
+
+                            <div class="row" style="margin-top:20px;">
+                                <div class="form-group">
+                                    <label for="inputUserNo" class="col-sm-1 control-label">地址</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" id="showUrl" rows="3" style="margin:auto;display:block;" placeholder="Url"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row" style="margin-top:20px;margin-left:35px;">
+                                <div class="form-group">
+                                    <div class="col-sm-6" id="hintInfo"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		Promo.loadData();
+        $('#cutoffDate').datetimepicker({
+            autoclose : 1,
+            startView : 2,
+            format : 'yyyy-mm-dd hh:ii'
+        });
+        setSummernoteInfo($("#couponContent"));
+        setSummernoteInfo($("#endContent"));
+	});
+</script>
+</body>
+</html>

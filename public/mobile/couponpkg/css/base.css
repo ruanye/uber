@@ -1,0 +1,18 @@
+@import"reset.css";
+.flex{display:-webkit-box;display:-moz-box;display:-ms-box;}
+/*设置伸缩盒对象的子元素从上到下纵向对齐方式*/
+.v-center{-webkit-box-pack:center;-moz-box-pack:center;-ms-box-pack:center;}
+/*设置伸缩盒对象的子元素从左到右水平排列*/
+.orient-h{-webkit-box-orient:horizontal;-moz-box-orient:horizontal;-ms-box-orient:horizontal;}
+/*设置伸缩盒对象的子元素从上到下纵向排列*/
+.orient-v{-webkit-box-orient:vertical;-moz-box-orient:vertical;-ms-box-orient:vertical;}
+/*子元素的flex划分*/
+.flex1{-webkit-box-flex:1;-moz-box-flex:1;-ms-box-flex:1;}
+.flex2{-webkit-box-flex:2;-moz-box-flex:2;-ms-box-flex:2;}
+.flex3{-webkit-box-flex:3;-moz-box-flex:3;-ms-box-flex:3;}
+html, body, .wrap-page {
+  height: 100%;
+}
+.wrap-page {
+  -webkit-overflow-scrolling: touch;
+}

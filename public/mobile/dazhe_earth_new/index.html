@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>优步世界地球日，东莞五折券限量领</title>
+    <link href="css/gz-hongbao.css" rel="stylesheet" media="screen">
+    <style>
+        #gameOver{
+            background:url(images/page1-bg.png) no-repeat;
+            background-size:100% 100%;
+
+        }
+        #gameOver .content{
+            font-size:0.3rem;
+            color:#fff;
+            width:6rem;
+            margin: 0 auto;
+            text-align:left;
+
+        }
+        #gameOver .content span{
+            font-size:0.4rem;
+        }
+    </style>
+</head>
+<body>
+<div id="wx_pic" style="display: none;margin: 0 auto;">
+    <img src="images/icon.jpg"/>
+</div>
+<div class="wrap-page">
+    <section class="page " id="page1">
+        <div class="icon"></div>
+        <div class="pageText1">
+            <p class="p1">优步世界地球日</p>
+            <p class="p2">东莞五折券限量领</p>
+            <!--<p class="p2">送你<span class="money">210元</span> 乘车劵</p>-->
+        </div>
+        <div class="earth"></div>
+        <a href="#" class="count">点击抢优惠</a>
+    </section>
+    <section class="page hide" id="page2">
+        <div class="icon"></div>
+        <div class="contentIcon"></div>
+        <div class="text">优步为你的电话隐私保驾护航</div>
+        <input class="tel" placeholder="输入手机号码" id="phoneNumber"/>
+        <button class="click" id="phone_btn" onclick="phoneCoupon();">
+            <div>抢！</div>
+        </button>
+
+        <input type="hidden" id="carCouponId"/>
+    </section>
+    <section class="page hide" id="page3">
+        <div class="icon"></div>
+        <div class="content1"></div>
+        <p class="price">恭喜您!</p>
+        <p class="price" style="position:absolute;top:6.2rem">获得世界地球日</p>
+        <p class="price" style="position:absolute;top:6.9rem">专属五折券</p>
+        <!--<p class="price">恭喜你获得<span class="money">210元</span> 乘车金</p>-->
+        <!--<p class="use">人民优步+折扣大礼包 </p>-->
+        <div class="content2" style="height:1.9rem;top:8.8rem"></div>
+        <!--<div class="useTime">-->
+            <!--<p class="time">4/18-4/24自动生效</p>-->
+            <!--<p class="where">请于Uber APP优惠处查看</p>-->
+
+        <!--</div>-->
+        <p class="price" style="position:absolute;top:10.9rem;font-size: 12px;">
+            优惠已自动存入您的账号中，打开Uber App，点击左上角，选择”优惠“处查看优惠详情。一键呼叫，即享优惠。
+        </p>
+        <a href="#" class="more">教你获得更多乘车金</a>
+    </section>
+    <section class="page hide" id="page4">
+        <div class="icon"></div>
+        <div class="recomand">
+            <p class="passenger">推荐乘客</p>
+            <p class="more3">再获得三次免费行程</p>
+            <p class="line"></p>
+        </div>
+        <div class="content">
+            <div class="step step1">
+                <span class="left"></span>
+          <span class="right">
+            <p class="p1">1</p>
+            <p class="p2">打开Uber App</p>
+            <p class="p3">选择 <span class="special">“推荐乘客得优惠”</span></p>
+            <p class="p4">将你的优惠码分享给好友</p>
+          </span>
+            </div>
+            <div class="step step2">
+                <span class="left"></span>
+          <span class="right">
+            <p class="p1">2</p>
+              <!--          <p class="p2">打开Uber App</p> -->
+            <p class="p3">好友注册完成后 <span class="special">输入您的优惠码</span></p>
+            <p class="p4">并完成首次乘车</p>
+          </span>
+            </div>
+            <div class="step step3">
+                <span class="left"></span>
+          <span class="right">
+            <p class="p1">3</p>
+              <!--          <p class="p2">打开Uber App</p> -->
+            <p class="p3">您的账户将自动获得 <span class="special">3次10元</span></p>
+            <p class="p4">乘车优惠可在 “付款”中查看</p>
+          </span>
+
+            </div>
+
+        </div>
+        <a href="#" class="share">我要分享给好友</a>
+    </section>
+    <section class="page hide" id="page5">
+        <div class="icon"></div>
+        <div class="content">
+            <div class="text">
+                <p class="p1">这么好的事</p>
+                <p class="p2">当然要分享给好基友啦！</p>
+                <p class="p4">关注微信公众号</p>
+                <p class="p5">奔跑的烧鹅濑粉</p>
+                <p class="p6">优惠福利拿到软</p>
+            </div>
+            <a href="#" class="direction" onclick="window.location.href='http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIxNzEzNjI3Nw==#wechat_webview_type=1&wechat_redirect'">点击直达</a>
+        </div>
+    </section>
+    <section class="page hide" id="page6">
+        <div class="icon"></div>
+        <div class="regist"></div>
+        <div class="content">
+            <p class="p1">还没注册Uber优步？错过机会好可惜哦</p>
+            <a href="#" class="signIn" onclick="window.location.href='https://get.uber.com.cn/invite/Uber东莞特别优惠'">立即注册</a>
+        </div>
+    </section>
+
+    <section class="page hide" id="gameOver">
+        <div class="icon"></div>
+        <div class="content">
+            <div class="text" style="position: absolute;left: 50%;top:50%;-webkit-transform: translate(-50%,-50%);transform: translate(-50%,-50%); ">
+
+                <span style="font-size: 0.6rem">亲，很抱歉五折券已经领取完毕</span><br><br>
+                本周出行补贴如下：<br><br>
+                <span>优惠一</span>：工作日非高峰期，人民优步＋全城66折，拼车低至3.6元，错峰出行更划算！<br><br>
+                <span>优惠二</span>：上下班通勤即享75折，选择拼车更环保！
+            </div>
+        </div>
+    </section>
+</div>
+<script type="text/javascript">
+
+</script>
+</body>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script src="https://leancloud.cn/scripts/lib/av-0.5.1.min.js"></script>
+<script type="text/javascript" src="../../javascript/AV.analytics.js"></script>
+<script type="text/javascript" src="../../javascript/event.js"></script>
+<script type="text/javascript" src="../../javascript/common.js"></script>
+<script src="vendor/lib-flexible/build/flexible.js"></script>
+<script src="vendor/zepto/zepto.min.js"></script>
+<script src="js/index.js"></script>
+<script>
+    $(function () {
+        $(".more").click(function () {
+            $("#page3").hide();
+            $("#page4").show();
+        });
+        $(".share").click(function () {
+            $("#page4").hide();
+            $("#page5").show();
+        });
+    })
+</script>
+</html>

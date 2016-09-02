@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>30000+个红包！限时瓜分！</title>
+    <link href="css/pcx.css" rel="stylesheet" media="screen">
+</head>
+
+<body>
+    <div style="position: absolute;margin:0 auto;display:none;"><img src="images/icon.png" alt=""></div>
+    <div class="wrap-page">
+        <section class="page" id="index-page" >
+            <div class="up-box">
+                <p class="info-lg" style="margin-top:0.5rem">30,000+个红包
+                    <br>周五,周六等你来秒杀</p>
+            </div>
+            <div class="down-box flex-1 flex-m">
+                <div class="inner">
+                    <div id="items"> </div>
+                    <img src="images/l1.png" alt="" class="logo">
+                </div>
+
+
+            </div>
+        </section>
+        <section class="page" id="mobile-page" style="display:none">
+
+            <div class="top-bar flex-1 flex-m">
+                <div class="fixed-logo"><img src="images/p1.png" alt=""></div>
+            <div class="inner" style="margin-bottom: 1.5rem">
+
+                <input type="text" class="ipt tade" placeholder="输入Uber绑定手机号">
+                <div style="margin-bottom:0.234375rem;margin-top:0.3125rem"><button class="com-btn fadeinright">领取秒杀优惠</button></div>
+                <p class="info-s" ><a href="https://get.uber.com.cn/invite/620优步送红包" style="text-decoration: none;color:#13a4ab">*没注册？赶紧注册抢百万红包！</a></p>
+            </div>
+                
+            </div>
+            <div class="down-box">
+                <img src="images/l1.png" alt="" class="logo">
+            </div>
+        </section>
+        <section class="page" id="result-page" style="display:none">
+            <div class="top-bar"><img src="images/l1.png" alt=""></div>
+            <div class="down-box flex-1 flex-m">
+                <div class="inner">
+                    <div class="result-box">
+                        <p class="info-lgw" style="margin-top:0.390625rem">至尊￥666</p>
+                        <p class="info-s1" style="margin-top:1.25rem;line-height:2;color: #fff">40次免费行程
+                            <br>每次最高减免16.65元
+                            <br>12月31日前有效</p>
+                    </div>
+                    <div class="flex-box">
+                        <div class="flex-1">
+                            <button class="com-btn re-btn" style="width:3.1875rem">再领一个</button>
+                        </div>
+                        <div class="flex-1">
+                            <button class="com-btn share-btn" style="width:3.1875rem">送给好友</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="page flex-m" id="user-page" style="display:none">
+            
+            
+                <div class="inner">
+                   <img src="images/p17.png" alt="" class="p17 fadeIn">
+                   <p class="info-s" style="color:#fff;margin-top:0.3125rem;margin-bottom:0.3125rem">还没注册Uber优步？错过优惠好可惜哦！</p>
+                   <div><button class="com-btn fadeinright">立即注册拿优惠</button></div>
+                </div>
+           <img src="images/l1.png" alt="" class="fixed-bottom">
+        </section>
+       
+        <section class="page" id="end-page" style="display:none">
+            <div class="top-bar"><img src="images/l1.png" alt=""></div>
+            <div class="down-box flex-1 flex-m">
+                <div class="inner">
+                    <p class="info-lgl" style="color:#2fc5cc;margin-bottom:0.3125rem">啊噢！手慢了一丢丢<br>莫事，还有机会！</p>
+                    <div id="end-topic"><img src="images/p4.png" alt="" style="width:2.828125rem"></div>
+                    <div class="flex-box">
+                        <div class="flex-1">
+                            <button class="com-btn re-btn" style="width:3.1875rem" >再领一个</button>
+                        </div>
+                        <div class="flex-1">
+                            <button class="com-btn share-btn" style="width:3.1875rem" >造福好友</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="page" id="share-page" style="display:none">
+           <div class="inner">
+                   <img src="images/p18.png" style="width:100%;">
+                   
+                </div>
+           <img src="images/l1.png" alt="" class="fixed-bottom">
+        </section>
+    </div>
+    <script src="vendor/lib-flexible/build/flexible.js"></script>
+    <script src="vendor/zepto/zepto.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="https://leancloud.cn/scripts/lib/av-0.5.1.min.js"></script>
+    <script type="text/javascript" src="../../javascript/common.js"></script>
+    <script type="text/javascript" src="../../javascript/AV.analytics.js"></script>
+    <script type="text/javascript" src="../../javascript/event.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var id = GetRequest()["id"];
+            Event.sendEvent("miao_huizhou_"+id);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title title="msg">其他统计</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"/>
+    <script src="../javascript/jquery-2.1.4.min.js"></script>
+    <script src="../javascript/bootstrap.min.js"></script>
+    <style>
+        html,body{
+            width: 100%;
+        }
+        #wrapper {
+            width: 100%;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        .ibox-title{
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .form-group .col-xs-5,.form-group .col-xs-7,.col-xs-4{
+            padding: 0px;
+        }
+        .btn-primary {
+            color: #fff;
+            background-color: #8ed9ca;
+            border-color: #63d3bf;
+        }
+        .dropdown-menu li{
+            border-bottom: 1px solid #d3d3d3;
+        }
+        .legend{
+            position: absolute;
+            z-index: 99999;
+            font-size: 10px;
+            width: 200px;
+            opacity: 0.8;
+        }
+        .legend .row{
+            margin-top: 5px;
+        }
+        .show {
+            width: 20px;
+            height: 20px;
+        }
+        #lineChartParent{
+            max-width: 87%;
+            max-height: 80%;
+        }
+    </style>
+</head>
+
+<body>
+<SCRIPT>
+    $(document).ready(function(){
+        $("#foo").load("top.html");
+    });
+    function menuShowed(){
+        $("#actmenu_ul").addClass("in");
+        $("#activitycoupon_li").addClass("active");
+    }
+</SCRIPT>
+<div role="navigation" id="foo" class="nav-collapse"></div>
+<div role="main" class="main">
+    <div id="wrapper">
+        <div class="legend">
+            <div class="row"><span class="show col-xs-2" style="background-color:#00a47b"></span><span id="qita" class="col-xs-5">阅读次数</span></div>
+        </div>
+        <div id="page-wrapper" class="gray-bg">
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="form-group text-right">
+                                            <label class="col-xs-5 control-label">开始时间：</label>
+                                            <div class="col-xs-7">
+                                                <input class="form-control" style="width: 100%;" id="startTime" placeholder="开始时间" readonly="readonly">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="form-group text-right">
+                                            <label class="col-xs-5 control-label">截止时间：</label>
+                                            <div class="col-xs-7">
+                                                <input class="form-control" style="width: 100%;" id="endTime" placeholder="过期时间" readonly="readonly">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <div id="lineChartParent">
+                                    <canvas id="lineChart" height="140"></canvas>
+                                </div>
+                            </div>
+                            <div id="PVSpan"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Mainly scripts -->
+<script src="https://leancloud.cn/scripts/lib/av-0.5.1.min.js"></script>
+<script type="text/javascript" src="../javascript/common.js"></script>
+
+<script src="count/js/couponCount.js"></script>
+
+<script src="count/js/jquery.metisMenu.js"></script>
+<script src="count/js/jquery.slimscroll.min.js"></script>
+
+
+<!-- ChartJS-->
+<script src="count/js/Chart.min.js"></script>
+
+
+<!--/日期控件-->
+<link rel="stylesheet" href="../stylesheets/bootstrap-datetimepicker.css" media="screen"/>
+<script type="text/javascript" src="../javascript/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="../javascript/bootstrap-datetimepicker.zh-CN.js"></script>
+
+</body>
+
+</html>

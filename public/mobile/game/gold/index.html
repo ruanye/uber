@@ -1,0 +1,202 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <title>新春快乐</title>
+        <meta charset="utf-8">
+       	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection"content="telephone=no, email=no" />
+        <!--设置开始页面图片-->
+        <!--<link rel="/touch/apple-touch-startup-image" href="startup.png" />-->
+        <!--在设置书签的时候可以显示好看的图标-->
+        <!--<link rel="apple-touch-icon" href="/touch/iphon_tetris_icon.png"/>-->
+        <link type="text/css" rel="stylesheet" href="css/com.css"/>
+		<script src="js/jquery.min.js"></script>
+    </head>
+    <body >
+	
+<div class="wrap-page">
+    <section class="page sc1" style="display:block;">
+	 <div class="rule-box">
+
+	 </div>
+		<div class="leftbar">
+			<a href="#" class="btn"></a>
+		</div>
+		<div class="leftbar_hz" style="z-index: 999">
+			<!--<a href="#" class="btn_hz"></a>-->
+			<img src="images/index_hz.png" style="width: 130px;height: 200px;position: absolute;right: 1rem;bottom: 2rem;">
+		</div>
+	</section>
+
+	
+	 <section class="page jg1" style="display:none;">
+     <div class="jg1-box">
+	 <div class="score" id="rank1"></div>
+
+	 </div>
+		 <div>
+			 <a href="#" id="btn1" class="btn1"></a>
+		 </div>
+		 <div class="leftbar_hz" style="z-index: 999">
+			 <!--<a href="#" class="btn_hz"></a>-->
+			 <img src="images/index_hz.png" style="width: 130px;height: 200px;position: absolute;right: 1rem;bottom: 2rem;">
+		 </div>
+	</section>
+	
+	 <section class="page jg2" style="display:none;">
+     <div class="jg2-box">
+		 <div class="score2" style="height: 20rem;z-index: 9999;bottom:33vw" onclick="toNext();"></div>
+	 <div class="score1" id="rank2"></div>
+	 </div>
+		 <div>
+			 <a href="#" class="btn2" id="btn2"></a>
+		 </div>
+		 <div class="leftbar_hz" style="z-index: 999">
+			 <!--<a href="#" class="btn_hz"></a>-->
+			 <img src="images/index_hz.png" style="width: 130px;height: 200px;position: absolute;right: 1rem;bottom: 2rem;">
+		 </div>
+	</section>
+	
+	 <section class="page jg3" style="display:none;">
+     <div class="jg3-box">
+		 <div class="score2" style="height: 20rem;z-index: 9999;bottom:33vw" onclick="toNext();"></div>
+		 <div class="score2" id="rank3"></div>
+
+
+	 </div>
+		 <div>
+			 <a href="#" class="btn3" id="btn3"></a>
+		 </div>
+		 <div class="leftbar_hz" style="z-index: 999">
+			 <!--<a href="#" class="btn_hz"></a>-->
+			 <img src="images/index_hz.png" style="width: 130px;height: 200px;position: absolute;right: 1rem;bottom: 2rem;">
+		 </div>
+	</section>
+
+	 <section class="page jg4" style="display:none;" >
+     <div class="jg4-box">
+	 </div>
+	</section>
+
+</div>
+    
+ <script type="text/javascript">
+
+	 var url = location.search;
+	 var theRequest = new Object();
+	 if (url.indexOf("?") != -1) {
+		 var str = url.substr(1);
+		 var strs = str.split("&");
+		 for(var i = 0; i < strs.length; i ++) {
+			 theRequest[strs[i].split("=")[0]]=(strs[i].split("=")[1]);
+		 }
+		 localStorage.setItem("activityId", theRequest.activityId);
+		 localStorage.setItem("uuid", theRequest.uuid);
+	 }
+
+	 var rank = localStorage.getItem("rank");
+	 var score = localStorage.getItem("score");
+	 var msg = "";
+	 if(score==0){
+		 msg = "再接再励";
+
+	 }else{
+		 msg = "恭喜通关";
+	 }
+	 if(rank == 1){
+		 hideAll();
+		 $(".jg1").show();
+		 $("#rank1").html(msg);
+	 }else if(rank == 2){
+		 hideAll();
+		 $(".jg2").show();
+		 $("#rank2").html(msg);
+	 }else if(rank == 3){
+		 hideAll();
+		 if(score=="0"){
+			 $(".jg3").show();
+			 $("#rank3").html(msg);
+		 }else{
+			 $(".jg2").show();
+			 $("#rank2").html(msg);
+		 }
+	 }else if(rank == 4){
+		 hideAll();
+		 $(".jg3").show();
+		 $("#rank3").html(msg);
+	 }
+
+
+	 $('.btn').click(function() {
+		initGame();
+	 });
+
+
+	 $('#btn2').click(function() {
+		 initGame();
+	 });
+
+	 $('#btn3').click(function() {
+		initGame();
+	 });
+
+	 $('.jg4').click(function() {
+		 hideAll();
+		 $(".jg1").show();
+	 });
+
+	 //礼包按钮点击后动画
+	 //屏蔽礼包
+//     $('#btn1').click(function() {
+//		 $(this).addClass('animated2');
+//		 setTimeout(function(){
+//			 hideAll();
+//			 $(".jg4").show();
+//			 $('#btn1').removeClass('animated2').addClass('btn1');
+//		 }, 2000);
+//
+//	 });
+
+	 function toNext(){
+		 if(score!=0){
+			 var url="../../../promo/mobile/"+localStorage.getItem("activityId")+"?redirect=x";
+			 var uuid=localStorage.getItem("uuid");
+			 if(uuid!="undefined"){
+				 url=url+"&uuid="+uuid;
+			 }
+			 location.href=url;
+			 
+			 /* var url="../../promo/promo.html?activityId="+localStorage.getItem("activityId");
+			 if(localStorage.getItem("uuid")!="undefined"){
+				 url=url+"&uuid="+localStorage.getItem("uuid");
+			 }
+			 location.href=url; */
+		 }
+	 }
+
+	 function hideAll(){
+		 $(".jg1").hide();
+		 $(".jg2").hide();
+		 $(".jg3").hide();
+		 $(".jg4").hide();
+		 $(".sc1").hide();
+	 }
+
+	 function initGame(){
+		 if(localStorage == null) {
+			 alert("您的浏览器不支持该游戏");
+			 return;
+		 }
+
+		 localStorage.setItem("startGame", "start");
+		 location.href = "game_getgold.html";
+	 }
+
+	 localStorage.setItem("rank", -1);
+	 localStorage.setItem("score", 0);
+</script>
+
+</body>
+</html>
